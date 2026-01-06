@@ -45,7 +45,7 @@ impl MazeGen {
                     print!("#")
                 }
                 else {
-                    print!("*")
+                    print!(" ")
                 }
             }
             println!();
