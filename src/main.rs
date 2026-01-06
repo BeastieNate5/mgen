@@ -100,7 +100,7 @@ impl MazeGen {
                     print!("#")
                 }
                 else if y == 2 {
-                    print!("*")
+                    print!("\x1b[92m*\x1b[0m")
                 }
                 else {
                     print!(" ")
