@@ -1,3 +1,5 @@
+use std::{env, process};
+
 use rand::{rngs::ThreadRng, seq::SliceRandom};
 
 struct MazeGen {
@@ -54,7 +56,22 @@ impl MazeGen {
 }
 
 fn main() {
-    let mut maze = MazeGen::new(99);
+    let args : Vec<String> = env::args().collect();
+
+    if args.len() < 2 {
+        println!("mgen <maze_size>");
+        process::exit(1);
+    }
+
+    let size : usize = match args[1].parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter valid number");
+            process::exit(1);
+        }
+    };
+
+    let mut maze = MazeGen::new(size);
     maze.carve(1, 1);
     maze.display_maze();
 }
